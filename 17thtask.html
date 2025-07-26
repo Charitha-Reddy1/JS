@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizz</title>
+    <style>
+        .que1,.que2,.que3,.que4,.que5,.que6,.que7,.que8,.que9,.que10{
+            width:100%;
+            height:200px;
+            border:2px solid black;
+            border-radius: 10px;
+            background: repeating-linear-gradient(yellow,lightblue,orange);
+        }
+        body{
+            background-color:black ;
+        }
+        .correct {
+            background-color: #90EE90; 
+        }
+        .incorrect {
+            background-color: #FFCCCB; 
+        }
+        .submit-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        .score-display {
+            text-align: center;
+            font-size: 24px;
+            color: white;
+            margin: 20px 0;
+        }
+        .not-answered {
+            border: 2px solid orange;
+        }
+    </style>
+    <script>
+        // Correct answers for each question
+        const correctAnswers = {
+            q1: "op3", // Where are you
+            q2: "op2", // I love you
+            q3: "op4", // Shaking my head
+            q4: "op3", // Oh my god
+            q5: "op1", // By the way
+            q6: "op3", // For your information
+            q7: "op3", // You only live once
+            q8: "op4", // Suspicious
+            q9: "op3", // To be honest
+            q10: "op1" // I know, right?
+        };
+
+        function checkAnswers() {
+            let score = 0;
+            const totalQuestions = Object.keys(correctAnswers).length;
+            
+            // Reset all styling first
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.parentElement.classList.remove('correct', 'incorrect');
+            });
+            
+            // Highlight questions that weren't answered
+            document.querySelectorAll('.que1, .que2, .que3, .que4, .que5, .que6, .que7, .que8, .que9, .que10').forEach(question => {
+                question.classList.remove('not-answered');
+                const questionName = question.querySelector('input[type="radio"]').name;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                if (!selectedOption) {
+                    question.classList.add('not-answered');
+                }
+            });
+
+            // Check each question
+            for (const question in correctAnswers) {
+                const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+                
+                if (selectedOption) {
+                    const isCorrect = (selectedOption.value === correctAnswers[question]);
+                    
+                    if (isCorrect) {
+                        score++;
+                        selectedOption.parentElement.classList.add('correct');
+                    } else {
+                        selectedOption.parentElement.classList.add('incorrect');
+                        // Also show the correct answer
+                        const correctOption = document.querySelector(`input[name="${question}"][value="${correctAnswers[question]}"]`);
+                        correctOption.parentElement.classList.add('correct');
+                    }
+                }
+            }
+            
+            // Display score
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            scoreDisplay.innerHTML = `You scored ${score} out of ${totalQuestions}!`;
+            
+            // Scroll to score display
+            scoreDisplay.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
+
+</head>
+<body>
+    <h1 style="color: cyan;text-align: center;">Short forms Quiz</h1>
+    
+    <div class="que1">
+        <h4>1.What is "WRU"</h4><br>
+        <label><input type='radio'  value="op1" name="q1">A.Who are you</label><br>
+        <label><input type='radio' value="op2" name="q1">B.What are you</label><br>
+        <label><input type='radio' value="op3" name="q1">C.Where are you</label><br>
+        <label><input type='radio' value="op4" name="q1">D.Why are you</label>
+    </div><br>
+    <div class="que2">
+        <h4>2.What is "ILU"</h4><br>
+        <label><input type='radio'  value="op1" name="q2">A.I like you</label><br>
+        <label><input type='radio' value="op2" name="q2">B.I love you</label><br>
+        <label><input type='radio' value="op3" name="q2">C.I leave you</label><br>
+        <label><input type='radio' value="op4" name="q2">D.I lost you</label>
+    </div><br>
+    <div class="que3">
+        <h4>3.What is "SMH"</h4><br>
+        <label><input type='radio'  value="op1" name="q3">A.Shivering my head</label><br>
+        <label><input type='radio' value="op2" name="q3">B.Showing my head</label><br>
+        <label><input type='radio' value="op3" name="q3">C.Scratching my head</label><br>
+        <label><input type='radio' value="op4" name="q3">D.Shaking my head</label>
+    </div><br>
+    <div class="que4">
+        <h4>4.What is "OMG"</h4><br>
+        <label><input type='radio'  value="op1" name="q4">A.Oh my goddess</label><br>
+        <label><input type='radio' value="op2" name="q4">B.Oh my gang</label><br>
+        <label><input type='radio' value="op3" name="q4">C.Oh my god</label><br>
+        <label><input type='radio' value="op4" name="q4">D.Oh my godfather</label>
+    </div><br>
+    <div class="que5">
+        <h4>5.What is "BTW"</h4><br>
+        <label><input type='radio'  value="op1" name="q5">A.By the way</label><br>
+        <label><input type='radio' value="op2" name="q5">B.Between</label><br>
+        <label><input type='radio' value="op3" name="q5">C.By the work</label><br>
+        <label><input type='radio' value="op4" name="q5">D.By the worship</label>
+    </div><br>
+    
+    <div class="que6">
+        <h4>6.What is "FYI"</h4><br>
+        <label><input type='radio'  value="op1" name="q6">A.For your interrogation</label><br>
+        <label><input type='radio' value="op2" name="q6">B.For your investigation</label><br>
+        <label><input type='radio' value="op3" name="q6">C.For your information</label><br>
+        <label><input type='radio' value="op4" name="q6">D.For your imagination</label>
+    </div><br>
+    <div class="que7">
+        <h4>7.What is "YOLO"</h4><br>
+        <label><input type='radio'  value="op1" name="q7">A.You only love once</label><br>
+        <label><input type='radio' value="op2" name="q7">B.You only like once</label><br>
+        <label><input type='radio' value="op3" name="q7">C.You only live once</label><br>
+        <label><input type='radio' value="op4" name="q7">D.You only laugh once</label>
+    </div><br>
+    <div class="que8">
+        <h4>8.What is "SUS"</h4><br>
+        <label><input type='radio'  value="op1" name="q8">A.Suspense</label><br>
+        <label><input type='radio' value="op2" name="q8">B.Sustain</label><br>
+        <label><input type='radio' value="op3" name="q8">C.Suspend</label><br>
+        <label><input type='radio' value="op4" name="q8">D.Suspicious</label>
+    </div><br>
+    <div class="que9">
+        <h4>9.What is "TBH"</h4><br>
+        <label><input type='radio'  value="op1" name="q9">A.To be healthy</label><br>
+        <label><input type='radio' value="op2" name="q9">B.To be honored</label><br>
+        <label><input type='radio' value="op3" name="q9">C.To be honest</label><br>
+        <label><input type='radio' value="op4" name="q9">D.To be happy</label>
+    </div><br>
+    <div class="que10">
+        <h4>10.What is "IKR"</h4><br>
+        <label><input type='radio'  value="op1" name="q10">A.I know ,right?</label><br>
+        <label><input type='radio' value="op2" name="q10">B.I knowlegde ,right?</label><br>
+        <label><input type='radio' value="op3" name="q10">C.I knew ,right?</label><br>
+        <label><input type='radio' value="op4" name="q10">D.In knight room !!</label>
+    </div>
+    <br><br>
+<button class="submit-btn" onclick="checkAnswers()">Submit Answers</button>
+    <div class="score-display" id="scoreDisplay"></div>
+
+</body>
+</html>

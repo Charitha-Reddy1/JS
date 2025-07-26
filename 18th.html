@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Selector</title>
+    <style>
+        .box{
+            height:70px;
+            width:70px;
+            border: 2px solid black;
+            border-radius: 20px;
+            text-align: center;
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <p id="para">Qs</p>
+    <p class="text">First para</p>
+    <p class="text">Second para</p> -->
+    <script>
+        // let ele=document.querySelector('#para');
+        // ele.style.color='green';
+        // let allParas=document.querySelectorAll(".text")
+        // for(let i=0;i<=allParas.length;i++){
+        //     allParas[i].style.color='brown';
+        // };
+        let i=0;
+        const a=['red','blue','green','yellow'];
+            const b=['Red','Blue','Green','Yellow'];
+            const c=['yellow','bisque','white','black'];
+        function Color(bcol,text,col){
+            const ele=document.getElementById('box');
+            
+            
+
+            ele.style.backgroundColor=a[i];
+            ele.innerText=b[i];
+            ele.style.color=c[i];
+            
+            //loop
+            i=(i+1)%a.length;
+        }
+    </script>
+    <div class="box" id="box">Hello</div><br>
+    <button  type="button" onclick="Color()">Color Change</button>
+    <!-- <button type="button" onclick="Color('blue','Blue','bisque')">Blue</button>
+    <button type="button" onclick="Color('green','Green','white')">Green</button>
+    <button type="button" onclick="Color('yellow','Yellow','black')">Yellow</button> -->
+</body>
+</html>

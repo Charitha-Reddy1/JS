@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onclick</title>
+    <style>
+        /* #box{ 
+            height:70px;
+            width:90px;
+            border:1px solid black;
+            border-radius:3px;
+        }
+        div{
+          height:70px;
+            width:90px;
+            border:1px solid black;
+            border-radius:3px;
+        } */
+         .slider{
+            height: 250px;
+            width: 400px;
+            margin:50px auto;
+            padding:20px;
+            border:2px solid black;
+            border-radius:15px;
+            text-align: center;
+
+        }
+        img{
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+        }
+        button{
+            margin: 10px;
+            padding:10px 20px;
+            font-size: 18px;
+            cursor:pointer;
+        }
+
+    </style>
+</head>
+<body style="background: linear-gradient(yellow,pink,yellow);">
+    <!-- <div>box</div> 
+    <div id="box" onmouseover="change()">hello</div>
+    <button onclick="console.log('button clicked')">click me once</button>
+    <button ondblclick="console.log('button clicked 2x')">click me twice</button><br>
+    <script>
+        function change(){
+            let ele=document.getElementById('box');
+            ele.textContent='ok'
+            ele.style.backgroundColor='pink';
+        }
+        let div=document.querySelector('div');
+        div.onmouseover=() => {
+            div.style.backgroundColor="red";
+            div.style.fontSize="30px";
+            
+        }
+    </script>-->
+    <h1 style="text-align: center;font-size: 50px;">Bomb Clicking...</h1>
+     <div class="slider" style="background: linear-gradient(lightblue,yellow,lightblue);margin-top: 150px;">
+        <img id="image" src="" alt="slider image"><br>
+        <button onclick="prevImage()">Previous</button>
+        <button onclick="nextImage()">Next</button>
+     </div> 
+     <script>
+        let images=[
+        "https://media1.tenor.com/m/qM1-gKp3uasAAAAd/bhibatsam-telugu.gif",
+        "https://media1.tenor.com/m/SJhk6-RQ2rIAAAAd/brahmi-brahmanandam.gif",
+        "https://media1.tenor.com/m/5p151tY3SYIAAAAd/mudu-capitals-vastayemo-jagan.gif",
+        "https://media1.tenor.com/m/6Y8WCEp-q7YAAAAC/telugu-tollywood.gif",
+        "https://media1.tenor.com/m/7HwyU8KX1FgAAAAC/brahmi-telugu.gif"
+        ];
+        let index = 0;
+        let imageElement=document.getElementById("image");
+        function showImage(){
+            imageElement.src=images[index];
+        }
+        function nextImage(){
+            index++;
+            if(index >= images.length) index=0;
+            showImage();
+        }
+        function prevImage(){
+            index--;
+            if(index < 0)index = images.length - 1;
+            showImage();
+        }
+        //show first image on page load
+        showImage();
+    </script>
+
+</body>
+</html>

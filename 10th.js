@@ -1,0 +1,27 @@
+console.log("JavaScript file");
+console.log("charitha");
+age=150;
+console.log(age);
+// alert('Welcome to javascript');
+// let price=9119
+// price=36;
+// console.log(price);
+var nme='javas';
+var nme='cripto';
+console.log(nme);
+let price=9119;
+price=36;
+console.log(price);
+const g=9.8;
+console.log(g);
+let fullname = "ram";
+let fullName = "pothineni";
+let Fullname = "rapo";
+console.log(fullname);
+console.log(fullName);
+console.log(Fullname);
+full_name='javafile';
+console.log(full_name);
+console.log();
+full$name='jsfile';
+console.log(full$name);

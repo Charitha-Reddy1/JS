@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline Italic</title>
+</head>
+<body>
+    <p id="myPara"></p>
+    <p id="finddate"></p>
+    <p id="sty">Styling</p>
+    <button onclick="getElementById('finddate').innerText=Date();">Find date and time with IST </button>
+    <button type="button" onclick="stylingg()">Print Text wid Func</button>
+    <script>
+        let element=document.getElementById('myPara').innerHTML='<i>Inline Italic In JS<i>';
+        function stylingg(){
+        let ele=document.getElementById('sty');
+        ele.style.fontFamily='Georgia';
+        ele.style.fontSize='55px';
+        ele.style.color='cyan';
+        ele.style.backgroundColor='green';
+        ele.style.border='2px solid red';
+        }
+       stylingg();
+    </script>
+</body>
+</html>

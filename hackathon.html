@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test Your Typing Speed</title>
+  <style>
+    body {
+      color:rgb(45, 6, 242);
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .bod{
+      background-image: url(type.png);
+      background-size: cover;
+    }
+
+    h1 {
+      animation: typewriter 3s steps(20) 1 normal both;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid black;
+      color:rgb(239, 18, 255);
+    }
+
+    @keyframes typewriter {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    #quote {
+      font-size: 1.2rem;
+      margin: 20px 0;
+      max-width: 600px;
+    }
+
+    #inputArea {
+      width: 100%;
+      max-width: 600px;
+      border: none;
+      background: #222;
+      color: #00FF00;
+      font-size: 1.2rem;
+      padding: 10px;
+      outline: none;
+      resize: none;
+      height: 100px;
+      margin-top: 100px;
+    }
+
+    .error {
+      text-decoration: underline red;
+    }
+
+    #progressBarContainer {
+      width: 100%;
+      max-width: 600px;
+      height: 10px;
+      background: #333;
+      margin: 10px 0;
+    }
+
+    #progressBar {
+      width: 0%;
+      height: 100%;
+      background: #00FF00;
+      transition: width 0.3s ease;
+    }
+
+    #stats {
+        border: 2px solid black;
+        background-color: white;
+        border-radius: 3px;
+      margin-top: 20px;
+      text-align:center;
+      display: none;
+      width:200px;
+    }
+
+    .stat {
+      margin: 5px 0;
+    }
+   
+
+    button {
+      padding: 8px 16px;
+      font-family: inherit;
+      font-size: 1rem;
+      background: #000;
+      color: #33FF33;
+      border: 2px solid #33FF33;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 600px) {
+      h1, #quote, #inputArea {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body class="bod">
+
+  <h1>Test Your Typing Speed</h1>
+  <div id="quote">Loading...</div>
+  <textarea id="inputArea" placeholder="Type the text above..."></textarea>
+  <div id="progressBarContainer">
+    <div id="progressBar"></div>
+  </div>
+  <button onclick="submitTyping()" id="submitBtn" disabled>Submit</button>
+
+
+
+  <div id="stats">
+    <p style="font-size: 25px; color:cyan"><i>Your Result</i></p>
+    <div class="stat">Speed: <span id="speed">0</span> WPM</div>
+    <div class="stat">Errors: <span id="errors">0</span></div>
+    <div class="stat">Accuracy: <span id="accuracy">0</span>%</div>
+    <button onclick="restartTest()">Restart</button>
+  </div>
+
+  <script>
+    const sentences = [
+      "The quick brown fox jumps over the lazy dog.",
+      "Typing fast requires practice and patience.",
+      "HTML provides the structure and content of a web page.",
+      "HTML uses tags to define headings, paragraphs, links, and other elements.",
+      "HTML is the backbone of all web documents.",
+      "CSS makes web pages look beautiful and user-friendly.",
+      "JavaScript adds interactivity and dynamic behavior to web pages.",
+"It can handle events, validate forms, and update content in real-time."
+    ];
+
+    let quote = '';
+    let startTime, timerStarted = false;
+    let inputArea = document.getElementById("inputArea");
+    let quoteDisplay = document.getElementById("quote");
+    let speedDisplay = document.getElementById("speed");
+    let errorDisplay = document.getElementById("errors");
+    let accuracyDisplay = document.getElementById("accuracy");
+    let stats = document.getElementById("stats");
+    let progressBar = document.getElementById("progressBar");
+
+    function getRandomQuote() {
+      return sentences[Math.floor(Math.random() * sentences.length)];
+    }
+
+    function displayQuote() {
+      quote = getRandomQuote();
+      quoteDisplay.innerText = quote;
+    }
+
+    function updateProgress(input) {
+      const progress = Math.min((input.length / quote.length) * 100, 100);
+      progressBar.style.width = `${progress}%`;
+    }
+
+    
+
+    function calculateStats() {
+      const input = inputArea.value;
+      const totalTime = (new Date() - startTime) / 60000;
+      const words = input.trim().split(/\s+/).length;
+      const speed = Math.round(words / totalTime);
+
+      let errors = 0;
+      for (let i = 0; i < input.length; i++) {
+        if (input[i] !== quote[i]) errors++;
+      }
+
+      const accuracy = Math.max(0, Math.round(((input.length - errors) / input.length) * 100));
+
+      speedDisplay.textContent = isNaN(speed) ? 0 : speed;
+      errorDisplay.textContent = errors;
+      accuracyDisplay.textContent = isNaN(accuracy) ? 0 : accuracy;
+    }
+
+        function submitTyping() {
+      if (!timerStarted) {
+        alert("Please start typing before submitting!");
+        return;
+      }
+
+      inputArea.disabled = true;
+      calculateStats();
+      stats.style.display = 'block';
+    }
+
+    inputArea.addEventListener("input", () => {
+      const input = inputArea.value;
+
+      if (!timerStarted) {
+        startTime = new Date();
+        timerStarted = true;
+        document.getElementById("submitBtn").disabled = false; // Enable submit button
+      }
+
+      updateProgress(input);
+
+      // Removed automatic stats display
+    });
+
+    function restartTest() {
+      timerStarted = false;
+      inputArea.value = '';
+      inputArea.disabled = false;
+      stats.style.display = 'none';
+      progressBar.style.width = '0%';
+      document.getElementById("submitBtn").disabled = true; // Disable button again
+      displayQuote();
+    }
+
+
+    window.onload = () => {
+      displayQuote();
+    };
+  </script>
+</body>
+</html>

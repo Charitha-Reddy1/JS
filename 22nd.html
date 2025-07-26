@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime numbers using func</title>
+</head>
+<body>
+    <script>
+    /*let primee=() =>{
+    console.log("~Prime numbers (1-100)~");
+    let count=0;
+    let i,j;
+    for(j=2;j<=100;j++)
+    {
+    for( i=1;i<=j;i++)
+    {
+        if(j%i==0)
+        count++;
+    }
+    if(count==2)
+    console.log(j);
+
+    count=0;
+    }
+    };
+    primee();
+    let dup=()=>{
+        
+    }*/
+   const findDuplicates = (arr) => {
+  return arr.filter((item, index) => arr.indexOf(item) !== index);
+};
+
+// Example usage:
+const arr1 = [1, 2, 3, 2, 4, 5, 5, 5, 6, 6];
+console.log(findDuplicates(arr1)); // Output: [2, 5]
+    </script>
+</body>
+</html>

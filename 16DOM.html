@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <h1>Inline Scripts</h1>
+    <p id="para"></p>
+    <p id="text"></p>
+    <p id="head">Text size</p>
+    <button type="button" onclick="checkprt()">Print Text wid Func</button>
+    <button type="button" onclick="getElementById('head').style.fontSize='100px'">Check text size</button>
+    <button onclick="alert('This is hello world')">Click the button</button>
+    <br><br><br>
+    <button type="button" onclick="getElementById('image').src='pic_bulbon.gif'">Switch on</button>
+    <img id="image" src="pic_bulboff.gif">
+    <button type="button" onclick="getElementById('image').src='pic_bulboff.gif'">Switch off</button><br><br>
+    <button id='bcol'  onclick="getElementById('bcol').style.backgroundColor='cyan'">Button color</button>
+    <script>
+        function checkprt(){
+            name=document.getElementById('text').innerText='function wid button';
+        }
+    </script>
+</body>
+</html>

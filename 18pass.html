@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cpassword</title>
+</head>
+<body style="text-align: center;margin-top: 100px;border:2px solid blueviolet;border-radius: 10px;">
+    <h2>Registration Form</h2>
+    <form onsubmit="return validatePass()">
+        <label for="password">Password:</label>
+        <input type="password" id="pass1" placeholder="Enter Password"><br><br>
+        <label for="password">Confirm Password:</label>
+        <input type="password" id="pass2" placeholder="Re-enter Password"><br><br>
+        <button type="submit" style="margin-bottom: 25px;">Submit</button>
+        
+    </form>
+    <script>
+        function validatePass(){
+        let ele=document.getElementById("pass1").value;
+        let ele1=document.getElementById("pass2").value;
+        if (ele===ele1){
+            alert("Password saved");
+            return true;
+        }
+        else{
+            alert("Re-enter the password correctly");
+            return false;
+        }
+    }
+    </script>
+</body>
+</html>

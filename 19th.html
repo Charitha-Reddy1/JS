@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>button 2x</title>
+    <style>
+     #box{ 
+            height:70px;
+            width:90px;
+            border:1px solid black;
+            border-radius:3px;
+        }
+        div{
+            height:70px;
+            width:90px;
+            border:1px solid black;
+            border-radius:3px;
+        } 
+    </style>
+</head>
+<body>
+    <div style="background-color: lightblue;">box</div> 
+    <div id="box" onmouseover="change()" style="background-color: aqua;">hello</div>
+    <button onclick="console.log('button clicked')">click me once</button>
+    <button ondblclick="console.log('button clicked 2x')">click me twice</button><br>
+    <script>
+        function change(){
+            let ele=document.getElementById('box');
+            ele.textContent='ok'
+            ele.style.backgroundColor='pink';
+            ele.style.textAlign='center';
+        }
+        let div=document.querySelector('div');
+        div.onmouseover=() => {
+            div.style.backgroundColor="red";
+            div.style.fontSize="15px";
+            div.style.textAlign='center';
+            
+        }
+    </script>
+</body>
+</html>
