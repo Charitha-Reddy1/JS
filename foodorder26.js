@@ -1,41 +1,28 @@
 //order process of a product from search to shipment
 
- let prod={"laptop":50000,"mobile":32000,"tab":15000,"mouse":5000,"keyboard":719,"hair dryer":799}
+ let prod={"burger":139,"pizza":159,"pasta":279,"noodles":149,"biryani":299}
  
- //1.Product search
+ //1.Item search
 
-function pro(search){
-    
+function fi(search){
      return new Promise((resolve,reject)=>{
-        console.log("Product Searching 🔍..."); 
+        console.log("Food item Searching 🔍..."); 
         setTimeout(()=>{
             if(prod.hasOwnProperty(search.toLowerCase())){
-                resolve(`Product ${search} is found`);
+                resolve(`Your dish ${search} is found`);
             }
             else{
-                reject(`Product is not found..`)
-            }
+                reject(`Dish is not found..`)
+            }1
         },3000);
     });
 }
 
-//2.Stock
 
-function stock(search,stock){
-     return new Promise((resolve,reject)=>{
-        console.log("Stock check 🤓..."); 
-        setTimeout(()=>{
-            if(stock===1){
-                resolve(`Stock is available `);
-            }
-            else{
-                reject("❌Out of stock !!");
-            }
-        },3000);
-    });
-}
 
-//3.place order
+
+
+//2.place order
 function porder(search,money){
      return new Promise((resolve,reject)=>{
          console.log("Payment status...💸");
@@ -50,14 +37,14 @@ function porder(search,money){
     });
 }
 
-//4.shipment
+//3.delivery
 
 function ship(){
     return new Promise((resolve,reject)=>{
         
         setTimeout(()=>{
             
-            resolve("🚚 Shipment process will start in a week.");
+            resolve("🚚Food will be delivered in an hour.");
             
             
         },4000)
@@ -66,13 +53,11 @@ function ship(){
 
 async function data1(params) {
 
-    const search = "tab";
-    const stockAvailable = 1;
-    const payment = 16000;
+    const search = "pizza";
+    const payment = 159;
 
     try{
-        console.log(await pro(search));
-        console.log(await stock(search,stockAvailable));
+        console.log(await fi(search));
         console.log(await porder(search,payment));
         console.log(await ship());
     }
