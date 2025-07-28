@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listener,Mouse event</title>
+</head>
+<body>
+    <!-- <button id="f1" onclick="phell()">Click me!</button> -->
+    <h1>Demo event</h1>
+    <div id="demo" style="width: 50px;height: 50px;background-color: aqua;">Click for mouse demo</div>
+    <script>
+        /*let r=document.getElementById("f1");
+        r.onclick=function(){
+            console.log("This onevent listener");
+        }
+       function phell(){
+        console.log("Inline Listener");
+       }
+       let r=document.getElementById("f1");
+       r.addEventListener("click",()=>{
+        console.log("Add Event Listener");
+       })*/
+    let re=document.getElementById("demo");
+    re.addEventListener("click",()=>{
+        console.log("clicked");
+    });
+     re.addEventListener("dblclick",()=>{
+        console.log("double clicked");
+    });
+    re.innerText="Click it";
+
+    //mouseover
+
+     re.addEventListener("mouseover",()=>{
+        re.style.backgroundColor="red";
+    });
+
+     re.addEventListener("mouseout",()=>{
+        re.style.backgroundColor="pink";
+    });
+    re.addEventListener("mouseup",()=>{
+        re.style.border="10px dotted indigo";
+    })
+    re.addEventListener("mousedown",()=>{
+        re.style.border="8px solid yellow";
+    });
+    </script>
+</body>
+</html>

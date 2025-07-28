@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food order link with JS</title>
+</head>
+<body>
+    <script src="foodorder26.js"></script>
+    <style>
+    body {
+      background-color: bisque;
+      /* background:linear-gradient(aqua,pink,orange) */
+    }
+
+    h2 {
+      color: rgb(51, 0, 255);
+      text-align: center;
+    }
+
+    p {
+      color: chartreuse;
+      text-align: center;
+      background-color: darkmagenta;
+      border-radius: 10px;
+      font-size: small;
+      padding: 10px;
+    }
+
+    .scroll-container {
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 20px 0;
+    }
+
+    .scroll-content {
+      display: inline-block;
+      animation: scroll-left 8s linear infinite;
+    }
+
+    .scroll-content img {
+      width: 200px;
+      height: 180px;
+      border-radius: 10px;
+      margin-right: 20px;
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>FOOD ORDER</h2>
+  <p style="font-size: larger;">Choose a food item from below list..</p>
+  <br>
+   
+  
+  <div class="scroll-container">
+    <div class="scroll-content">
+
+      <!-- Repeated images for seamless scroll -->
+      <img src="Biryani.avif" alt="Biryani" id="bi">
+      <img src="Burger.avif" alt="Burger" id="bu">
+      <img src="Cake.avif" alt="Cake" id="ca">
+      <img src="Puri.png" alt="Puri" id="pu">
+      <img src="dosa.png" alt="Dosa" id="do">
+
+      <img src="Biryani.avif" alt="Biryani" id="bi">
+      <img src="Burger.avif" alt="Burger" id="bu">
+      <img src="Cake.avif" alt="Cake" id="ca">
+      <img src="Puri.png" alt="Puri" id="pu">
+      <img src="dosa.png" alt="Dosa" id="do">
+    </div>
+  </div>
+  <input type="text" id="getitem" placeholder="Search for food..." style="width: 300px; padding: 8px; border-radius: 5px; border: 1px solid #ccc;margin-left: 30%;">
+   <button onclick="fi()" style="padding: 8px 16px; border-radius: 5px; background: #4caf50; color: white; border: none;">Search</button>
+   <div id="searchResult" style="margin-top: 20px; font-weight: bold; color: #d32f2f;margin-left: 32%;"></div><br>
+   <!-- <button onclick="porder()" style="padding: 8px 16px; border-radius: 5px; background: #4caf50; color: white; border: none;margin-left: 40%;">Click to pay now</button>
+   <input type="text" id="payy" placeholder="Enter the amount" style="width: 300px; padding: 8px; border-radius: 5px; border: 1px solid #ccc;margin-left: 30%;"> -->
+</body>
+</html>
