@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio buttons image size</title>
+</head>
+<body style="background-color: black;">
+    <h1 style="color: white;padding-left: 30%;">Check out the Burger size</h1>
+    <img src="Burger.avif" style="width: 100px;height: 100px; margin-left: 40%;" id="class">
+    <br>
+    <input type="radio" id="r1" name="change" value="a" ><label for="r1" style="background:linear-gradient(lightcoral,lightcoral,orange);padding: 10px;border-radius: 10px;color: white;">Small</label>
+    <input type="radio" id="r2" name="change" value="b"><label for="r2" style="background:linear-gradient(lightcoral,lightcoral,orange);padding: 10px;border-radius: 10px;color: white;">Medium</label>
+    <input type="radio" id="r3" name="change" value="c"><label for="r3" style="background:linear-gradient(lightcoral,lightcoral,orange);padding: 10px;border-radius: 10px;color: white;">Large</label>
+    <script>
+        let dem=document.getElementById('class');
+
+        document.getElementById("r1").addEventListener("change",()=>{
+            if(document.getElementById("r1").checked){
+                dem.style.width="50px";
+                dem.style.height="50px";
+                dem.style.backgroundImage='url("type.png")';
+                dem.style.backgroundSize="cover";
+                dem.style.backgroundRepeat = "no-repeat"; 
+                dem.style.backgroundPosition = "center";
+            }
+        })
+        
+       document.getElementById("r2").addEventListener("change",()=>{
+            if(document.getElementById("r2").checked){
+                dem.style.height="200px";
+                dem.style.width="200px";
+            }
+        })
+        
+        document.getElementById("r3").addEventListener("change",()=>{
+            if(document.getElementById("r3").checked){
+                dem.style.height="400px";
+                dem.style.width="400px";
+            }
+        })
+    </script>
+</body>
+</html>
