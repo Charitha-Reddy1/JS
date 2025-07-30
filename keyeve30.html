@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key board events</title>
+</head>
+<body>
+    <input id="view" type="text" name="event" placeholder="keyup event">
+    <script>
+      /*let s=document.getElementById("view").addEventListener("keydown", ()=>{
+          console.log("key pressed(down)")
+      })
+      let ju=document.getElementById("view").addEventListener("keyup", ()=>{
+          console.log("key released(up)")
+      })*/
+     //e.type,e.timeStamp,e.target
+      let s=document.getElementById("view").addEventListener("keyup", (e)=>{
+          console.log(e.key);
+      })
+    </script>
+</body>
+</html>
